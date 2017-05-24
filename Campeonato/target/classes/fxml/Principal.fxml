@@ -6,9 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="view.PrincipalController">
-    <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.PrincipalController">
+   <children>
+      <VBox layoutX="104.0" layoutY="-22.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnImportarClick" text="Importar" />
+            <TableView fx:id="tblVwCmp">
+              <columns>
+                <TableColumn fx:id="tblClmnClss" prefWidth="76.0" text="Classificação" />
+                <TableColumn fx:id="tblClmnTime" prefWidth="87.0" text="Time" />
+                  <TableColumn fx:id="tblClmnP" prefWidth="64.0" text="Pontuação" />
+                  <TableColumn fx:id="tblClmnV" prefWidth="50.0" text="Vitórias" />
+                  <TableColumn fx:id="tblClmnD" prefWidth="54.0" text="Derrotas" />
+                  <TableColumn fx:id="tblClmnE" prefWidth="52.0" text="Empates" />
+                  <TableColumn fx:id="tblClmnGP" prefWidth="52.0" text="Gols Pró" />
+                  <TableColumn fx:id="tblClmnGC" prefWidth="72.0" text="Gols Contra" />
+                  <TableColumn fx:id="tblClmnSD" prefWidth="92.0" text="Saldo de Gols" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

@@ -11,8 +11,8 @@ package model;
  */
 public class Time {
     String nome;
-    int vit = 0, der = 0, emp = 0;
-    int golP = 0, golN = 0;
+    Integer vit = 0, der = 0, emp = 0;
+    Integer golP = 0, golN = 0;
 
     public String getNome() {
         return nome;
@@ -89,6 +89,14 @@ public class Time {
     
     void addDer() {
         this.der++;
+    }
+    
+    void addGolP(byte gols) {
+        this.golP += gols;
+    }
+    
+    void addGolN(byte gols) {
+        this.golN += gols;
     }
 
     public Time() {

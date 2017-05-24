@@ -49,6 +49,22 @@ public class Jogo extends Time {
         
     }
     
+    public Jogo(String linha) {
+        String[] partes = linha.split("\\,");
+        
+        this.timeA = partes[0];
+        this.golA = Byte.parseByte(partes[1]);
+        this.timeB = partes[2];        
+        this.golB = Byte.parseByte(partes[3]);
+    } 
+
+    public Jogo(String timeA, String timeB, byte golA, byte golB) {
+        this.timeA = timeA;
+        this.timeB = timeB;
+        this.golA = golA;
+        this.golB = golB;
+    }
+    
     public Jogo(String timeA, String golA, String timeB, String golB) {
         this.timeA = timeA.toUpperCase();
         this.timeB = timeB.toUpperCase();
