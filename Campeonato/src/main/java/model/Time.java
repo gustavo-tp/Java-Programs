@@ -71,7 +71,7 @@ public class Time {
         return golP - golN;
     }
     
-    int pontos() {
+    int getPontos() {
         return (vit*3) + emp;
     }
     
@@ -105,10 +105,12 @@ public class Time {
     public Time(String nome) {
         this.nome = nome;
     }
-  
-       
+
     @Override
     public String toString() {
-        return "Time{" + "nome=" + nome + '}';
-    }  
+        return "Time{" + "nome=" + nome + ", vit=" + vit + ", pto=" + getPontos() + ", der=" + der + ", emp=" + emp + ", golP=" + golP + ", golN=" + golN + '}';
+    }
+
+    
+    
 }

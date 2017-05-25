@@ -9,7 +9,7 @@ package model;
  *
  * @author deinfo
  */
-public class Jogo extends Time {
+public class Jogo {
     String timeA, timeB;
     byte golA, golB;
 
@@ -71,5 +71,10 @@ public class Jogo extends Time {
         this.golA = Byte.parseByte(golA);
         this.golB = Byte.parseByte(golB);
     }     
+
+    @Override
+    public String toString() {
+        return "Jogo{" + "timeA=" + timeA + ", timeB=" + timeB + ", golA=" + golA + ", golB=" + golB + '}';
+    }
     
 }

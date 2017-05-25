@@ -52,7 +52,7 @@ public class PrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
-        dados = new Dados("G:\\jogo.txt");
+        dados = new Dados("F:\\jogo.txt");
         
         lstPrinc = dados.ler();        
     }    
