@@ -1,5 +1,5 @@
 model\Time.class
-com\mycompany\campeonato\MainApp.class
+application\MainApp.class
 model\Jogo.class
 view\PrincipalController.class
-model\Dados.class
+utilit\Dados.class

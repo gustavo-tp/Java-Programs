@@ -7,18 +7,38 @@ package model;
 
 /**
  *
- * @author deinfo
+ * @author Usuario
  */
 public class Jogo {
-    String timeA, timeB;
-    byte golA, golB;
+    
+    public String timeA;
+    public String timeB;
+    public byte golA;
+    public byte golB;
+    
+    public Jogo(String timeA, byte golA, String timeB, byte golB) {
+        this.timeA = timeA;
+        this.golA = golA;
+        this.timeB = timeB;
+        this.golB = golB;
+    }
+    
+    public Jogo(String linha) {
+        String[] partes = linha.split("\\,");
+        
+        this.timeA = partes[0];
+        this.golA = Byte.parseByte(partes[1]);
+        this.timeB = partes[2];
+        this.golB = Byte.parseByte(partes[3]);
+        
+    }
 
     public String getTimeA() {
         return timeA;
     }
 
     public void setTimeA(String timeA) {
-        this.timeA = timeA;
+        this.timeA = timeA.toUpperCase();
     }
 
     public String getTimeB() {
@@ -26,7 +46,7 @@ public class Jogo {
     }
 
     public void setTimeB(String timeB) {
-        this.timeB = timeB;
+        this.timeB = timeB.toUpperCase();
     }
 
     public byte getGolA() {
@@ -45,36 +65,12 @@ public class Jogo {
         this.golB = golB;
     }
 
-    public Jogo() {
-        
-    }
-    
-    public Jogo(String linha) {
-        String[] partes = linha.split("\\,");
-        
-        this.timeA = partes[0];
-        this.golA = Byte.parseByte(partes[1]);
-        this.timeB = partes[2];        
-        this.golB = Byte.parseByte(partes[3]);
-    } 
-
-    public Jogo(String timeA, String timeB, byte golA, byte golB) {
-        this.timeA = timeA;
-        this.timeB = timeB;
-        this.golA = golA;
-        this.golB = golB;
-    }
-    
-    public Jogo(String timeA, String golA, String timeB, String golB) {
-        this.timeA = timeA.toUpperCase();
-        this.timeB = timeB.toUpperCase();
-        this.golA = Byte.parseByte(golA);
-        this.golB = Byte.parseByte(golB);
-    }     
-
     @Override
     public String toString() {
         return "Jogo{" + "timeA=" + timeA + ", timeB=" + timeB + ", golA=" + golA + ", golB=" + golB + '}';
     }
+
+
+    
     
 }

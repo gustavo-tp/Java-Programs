@@ -7,96 +7,26 @@ package model;
 
 /**
  *
- * @author Gusta
+ * @author Usuario
  */
 public class Time {
-    String nome;
-    Integer vit = 0, der = 0, emp = 0;
-    Integer golP = 0, golN = 0;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
+    
+    public String nome;
+    int vitorias = 0;
+    int derrotas = 0;
+    int empates = 0;
+    int golPro = 0;
+    int golContra = 0;
+    byte clas = 0; // de 255 até -255
+    
+    
+    public Time(String nome, int vitorias, int derrotas, int empates, int golPro, int golContra) {
         this.nome = nome;
-    }
-
-    public int getVit() {
-        return vit;
-    }
-
-    public void setVit(int vit) {
-        if(vit > 0)
-            this.vit = vit;
-    }
-
-    public int getDer() {
-        return der;
-    }
-
-    public void setDer(int der) {
-        if(der > 0)
-            this.der = der;
-    }
-
-    public int getEmp() {
-        return emp;
-    }
-
-    public void setEmp(int emp) {
-        if(emp > 0)
-            this.emp = emp;
-    }
-
-    public int getGolP() {
-        return golP;
-    }
-
-    public void setGolP(int golP) {
-        if(golP > 0)
-            this.golP = golP;
-    }
-
-    public int getGolN() {
-        return golN;
-    }
-
-    public void setGolN(int golN) {
-        if(golN > 0)
-            this.golN = golN;
-    }
-    
-    int saldoGols() {
-        return golP - golN;
-    }
-    
-    int getPontos() {
-        return (vit*3) + emp;
-    }
-    
-    int partidas() {
-        return vit + der + emp;
-    }
-    
-    void addVit() {
-        this.vit++;        
-    }
-    
-    void addEmp() {
-        this.emp++;        
-    }
-    
-    void addDer() {
-        this.der++;
-    }
-    
-    void addGolP(byte gols) {
-        this.golP += gols;
-    }
-    
-    void addGolN(byte gols) {
-        this.golN += gols;
+        this.vitorias = vitorias;
+        this.derrotas = derrotas;
+        this.empates = empates;
+        this.golPro = golPro;
+        this.golContra = golContra;
     }
 
     public Time() {
@@ -106,11 +36,118 @@ public class Time {
         this.nome = nome;
     }
 
-    @Override
-    public String toString() {
-        return "Time{" + "nome=" + nome + ", vit=" + vit + ", pto=" + getPontos() + ", der=" + der + ", emp=" + emp + ", golP=" + golP + ", golN=" + golN + '}';
+    public int getSaldo() {
+        return golPro - golContra;
+    }
+    
+    public int getPontos() {
+        return vitorias * 3 + empates;
+    }
+    
+    public int getPartidas() {
+        return vitorias + derrotas + empates;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getVitorias() {
+        return vitorias;
+    }
     
+    public void addGolPro(byte gols){
+        this.golPro += gols;
+    }
+
+    public void addGolContra(byte gols){
+        this.golContra += gols;
+    }
+
+    public byte getClas() {
+        return clas;
+    }
+
+    public void setClas(byte clas) {
+        this.clas = clas;
+    }   
+
+    public void setVitorias(int vitorias) {
+        if (vitorias >= 0) {
+            this.vitorias = vitorias;
+        } else {
+            this.vitorias = 0;
+        }
+    }
+
+    public int getDerrotas() {
+        return derrotas;
+    }
+
+    public void setDerrotas(int derrotas) {
+        if (derrotas >= 0) {
+            this.derrotas = derrotas;
+        } else {
+            this.derrotas = 0;
+        }  
+    }
+
+    public int getEmpates() {
+        return empates;
+    }
+
+    public void setEmpates(int empates) {
+        if (derrotas >= 0) {
+            this.empates = empates;
+        } else {
+            this.empates = 0;
+        } 
+    }
+
+    public int getGolPro() {
+        return golPro;
+    }
+
+    public void setGolPro(int golPro) {
+        if (golPro >= 0) {
+            this.golPro = golPro;
+        } else {
+            this.golPro = 0;
+        }
+    }
+
+    public int getGolContra() {
+        return golContra;
+    }
+
+    public void setGolContra(int golContra) {
+        if (golContra >= 0) {
+            this.golContra = golContra;
+        } else {
+            this.golContra = 0;
+        }     
+    }
     
+    public void addVitoria() {
+        this.vitorias += 1;
+    }
+    
+    public void addDerrota() {
+        this.derrotas += 1;
+    }
+    
+    public void addEmpate() {
+        this.empates += 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Time{" + "nome=" + nome + ", ptos=" + getPontos() + '}';
+    }
+
+
 }
