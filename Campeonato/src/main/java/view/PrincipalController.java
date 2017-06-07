@@ -7,10 +7,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Jogo;
@@ -25,9 +29,43 @@ public class PrincipalController implements Initializable {
 
     @FXML
     public TableView<Time> tblVwTimes;
+    
+    @FXML
+    public TableView<Jogo> tblVwJogos;
+    
+    @FXML
+    public Label lbNomeTime;
+    
+    @FXML
+    public StackPane pnJogos;    
+    
+    public Time timeSel;
+    
+    @FXML
+    private void btnFecharClick() {
+        pnJogos.setVisible(false);
+        tblVwTimes.requestFocus();
+    }
+    
+    @FXML
+    public void tblVwClick(Event event) {
+        MouseEvent me = null;
+        if (event.getEventType() == MOUSE_CLICKED) {
+            me = (MouseEvent) event;
+            if (me.getClickCount() == 2) {
+                pnJogos.setVisible(true);
+                timeSel = tblVwTimes.getSelectionModel().getSelectedItem();
+                lbNomeTime.setText(timeSel.getNome());
+                
+                tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
+                //System.out.println(timeSel.getJogos());
+            }
+        }       
+        
+    }
 
     @FXML
-    private void btnImportaClick() {
+    private void btnAbrirClick() {
         final Stage stage = null;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Escolha o seu arquivo Txt");
@@ -52,6 +90,7 @@ public class PrincipalController implements Initializable {
         //dados = new Dados("G:\\jogo.txt");
 
         //lstPrinc = dados.ler();
-        //tblVwTimes.setItems(FXCollections.observableList(lstPrinc)); 
+        //tblVwTimes.setItems(FXCollections.observableList(lstPrinc));
+        pnJogos.setVisible(false);
     }
 }

@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Usuario
@@ -18,6 +21,7 @@ public class Time {
     int golPro = 0;
     int golContra = 0;
     byte clas = 0; // de 255 até -255
+    List<Jogo> jogos = new ArrayList<Jogo>();
     
     
     public Time(String nome, int vitorias, int derrotas, int empates, int golPro, int golContra) {
@@ -142,6 +146,10 @@ public class Time {
     
     public void addEmpate() {
         this.empates += 1;
+    }
+
+    public List<Jogo> getJogos() {
+        return jogos;
     }
 
     @Override

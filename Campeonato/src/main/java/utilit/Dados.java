@@ -47,6 +47,8 @@ public class Dados {
         posTimeA = achaTime(jg.getTimeA());
         posTimeB = achaTime(jg.getTimeB());
         
+        posTimeA.getJogos().add(jg);
+        posTimeB.getJogos().add(jg);
         
         if (jg.getGolA() > jg.getGolB()) {  // A Venceu
             posTimeA.addVitoria();
