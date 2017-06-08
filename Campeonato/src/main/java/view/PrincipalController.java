@@ -11,6 +11,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
@@ -26,6 +27,7 @@ public class PrincipalController implements Initializable {
     // @FXML
     private Dados dados;
     private List<Time> lstPrinc = new ArrayList<Time>();
+    private List<Jogo> listaTemp = new ArrayList<Jogo>();
 
     @FXML
     public TableView<Time> tblVwTimes;
@@ -37,7 +39,10 @@ public class PrincipalController implements Initializable {
     public Label lbNomeTime;
     
     @FXML
-    public StackPane pnJogos;    
+    public StackPane pnJogos;
+
+    @FXML
+    public RadioButton rdBtnDefalt;
     
     public Time timeSel;
     
@@ -45,7 +50,7 @@ public class PrincipalController implements Initializable {
     private void btnFecharClick() {
         pnJogos.setVisible(false);
         tblVwTimes.requestFocus();
-    }
+    }   
     
     @FXML
     public void tblVwClick(Event event) {
@@ -58,11 +63,59 @@ public class PrincipalController implements Initializable {
                 lbNomeTime.setText(timeSel.getNome());
                 
                 tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
-                //System.out.println(timeSel.getJogos());
             }
         }       
         
     }
+    
+    @FXML
+    public void btnFecharJogo() {
+        pnJogos.setVisible(false);
+        rdBtnDefalt.setSelected(true);
+    }
+    
+    @FXML
+    public void rdBtnTodos() {
+        tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
+    }
+    
+    @FXML
+    public void rdBtnVit() {
+        listaTemp.clear();
+        for (Jogo j : timeSel.getJogos()) {
+            if (j.timeA.equals(timeSel.getNome())) {
+                if(j.golA > j.getGolB())
+                    listaTemp.add(j);
+            } else 
+                if(j.golA < j.getGolB())
+                    listaTemp.add(j);
+        }
+        tblVwJogos.setItems(FXCollections.observableList(listaTemp));
+    }
+    
+    @FXML
+    public void rdBtnEmp() {
+        listaTemp.clear();
+        for (Jogo j : timeSel.getJogos()) {
+            if(j.golA == j.getGolB())
+                listaTemp.add(j);
+        }
+        tblVwJogos.setItems(FXCollections.observableList(listaTemp));
+    }
+    
+    @FXML
+    public void rdBtnDer() {
+        listaTemp.clear();
+        for (Jogo j : timeSel.getJogos()) {
+            if (j.timeA.equals(timeSel.getNome())) {
+                if(j.golA < j.getGolB())
+                    listaTemp.add(j);
+            } else
+                if(j.golA > j.getGolB())
+                    listaTemp.add(j);
+        }
+        tblVwJogos.setItems(FXCollections.observableList(listaTemp));
+    }    
 
     @FXML
     private void btnAbrirClick() {
