@@ -152,6 +152,10 @@ public class Time {
         return jogos;
     }
 
+    public void setJogos(List<Jogo> jogos) {
+        this.jogos = jogos;
+    }   
+
     @Override
     public String toString() {
         return "Time{" + "nome=" + nome + ", ptos=" + getPontos() + '}';

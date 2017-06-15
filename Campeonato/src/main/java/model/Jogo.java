@@ -63,7 +63,7 @@ public class Jogo {
 
     public void setGolB(byte golB) {
         this.golB = golB;
-    }
+    }   
 
     @Override
     public String toString() {

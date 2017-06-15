@@ -75,6 +75,23 @@ public class PrincipalController implements Initializable {
     }
     
     @FXML
+    private void btnSalvarJsonClick() {        
+        dados.gravaJogoTime(timeSel);        
+    }
+    
+    @FXML
+    public void btnLerJogosTimeClick() {
+        timeSel.setJogos(dados.lerJogoTime(timeSel));
+        tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
+    }
+    
+    @FXML
+    private void btnLimparClick() {
+        timeSel.getJogos().clear();
+        tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
+    }
+    
+    @FXML
     public void rdBtnTodos() {
         tblVwJogos.setItems(FXCollections.observableList(timeSel.getJogos()));
     }
