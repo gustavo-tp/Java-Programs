@@ -13,14 +13,22 @@
     <children>
         <VBox layoutX="164.0" layoutY="48.0" prefHeight="450.0" prefWidth="650.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-            <HBox alignment="CENTER" spacing="500.0">
+            <HBox alignment="CENTER" spacing="230.0">
                <children>
-                      <Button mnemonicParsing="false" onAction="#btnAbrirClick" text="Abrir" />
+                  <HBox alignment="CENTER" spacing="15.0">
+                     <children>
+                            <Button mnemonicParsing="false" onAction="#btnAbrirClick" text="Abrir" />
+                        <Button mnemonicParsing="false" onAction="#btnSalvarJson" text="Salvar JSON" />
+                        <Button mnemonicParsing="false" onAction="#btnLerJson" text="Ler JSON" />
+                        <Button mnemonicParsing="false" onAction="#btnLimpaCampClick" text="Limpar" />
+                        <Button mnemonicParsing="false" onAction="#btnAleatorioClick" text="Aleatorio" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
                   <Button mnemonicParsing="false" onAction="#btnSairClick" text="Sair" />
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -89,7 +97,7 @@
             <Insets />
          </opaqueInsets>
         </VBox>
-      <StackPane fx:id="pnJogos" prefHeight="450.0" prefWidth="660.0" style="-fx-background-color: f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="pnJogos" opacity="0.0" prefHeight="450.0" prefWidth="660.0" style="-fx-background-color: f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>

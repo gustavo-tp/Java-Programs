@@ -69,6 +69,35 @@ public class Dados {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void gravaTodosJson(List<Time> lstPrinc) {
+        try {
+            String nomeArq = "C:\\dados\\campeonato.json";
+
+            File file = new File(nomeArq);
+            file.createNewFile();
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            JSONObject eJSON = new JSONObject();
+            
+            for (Time t: lstPrinc) {
+                for (Jogo j : t.getJogos()) {
+                    if (j.timeA.equals(t.getNome())) {
+                        eJSON.put("timeA", j.getTimeA());
+                        eJSON.put("golA", j.getGolA());
+                        eJSON.put("timeB", j.getTimeB());
+                        eJSON.put("golB", j.getGolB());
+                        bw.write(eJSON.toString() + "\n");                        
+                    }
+                }                 
+            }
+
+            bw.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public List<Jogo> lerJogoTime(Time time) {
         List<Jogo> info = new ArrayList<>();
@@ -119,6 +148,36 @@ public class Dados {
         posTimeB.addGolContra(jg.getGolA());
 
     }
+    
+    public List<Time> lerJSON() {
+        lstTimes.clear();
+        Jogo jogoTmp;
+        String linha;
+        try {
+            br = new BufferedReader(new FileReader("C:\\dados\\campeonato.json"));
+            while ((linha = br.readLine()) != null) {
+                JSONObject eJSON = new JSONObject(linha);
+                Integer golA = eJSON.getInt("golA");
+                Integer golB = eJSON.getInt("golB");
+                String timeA = eJSON.getString("timeA");
+                String timeB = eJSON.getString("timeB");
+                jogoTmp = new Jogo(timeA, golA.byteValue(),
+                                   timeB, golB.byteValue());
+                
+                analisa(jogoTmp);
+            }
+            ordena();
+            System.out.println(lstTimes.size());
+            byte i = 1;
+            for (Time t : lstTimes) {
+                t.setClas(i);
+                i++;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao abrir arquivo!" + e.getMessage());
+        }
+        return lstTimes;
+    }
 
     public void ordena() {
         Time timeAux;
@@ -134,6 +193,26 @@ public class Dados {
                 timeAux = lstTimes.get(j - 1);
                 lstTimes.set(j - 1, lstTimes.get(j));
                 lstTimes.set(j, timeAux);
+                j--;
+            }
+            i++;
+        }
+    }
+    
+    public void ordenaAleat(List<Time> lstCmpAleat) {
+        Time timeAux;
+        int i, j;
+        i = 1;
+        while (i <= lstCmpAleat.size() - 1) {
+            j = i;
+            while ((j > 0) && ((lstCmpAleat.get(j - 1).getPontos() < lstCmpAleat.get(j).getPontos())
+                    || ((lstCmpAleat.get(j - 1).getPontos() == lstCmpAleat.get(j).getPontos())
+                    && (lstCmpAleat.get(j - 1).getVitorias() < lstCmpAleat.get(j).getVitorias()))
+                    || ((lstCmpAleat.get(j - 1).getVitorias() == lstCmpAleat.get(j).getVitorias())
+                    && (lstCmpAleat.get(j - 1).getSaldo() < lstCmpAleat.get(j).getSaldo())))) {
+                timeAux = lstCmpAleat.get(j - 1);
+                lstCmpAleat.set(j - 1, lstCmpAleat.get(j));
+                lstCmpAleat.set(j, timeAux);
                 j--;
             }
             i++;
@@ -167,6 +246,10 @@ public class Dados {
             }
         }
         return lstTimes;
+    }
+    
+    public void limpaListaTimes() {
+        lstTimes.clear();
     }
 
 }
