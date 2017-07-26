@@ -187,8 +187,6 @@ public class PrincipalController implements Initializable {
         Time time;
         time = lstPrinc.get(rd);
         lstCmpAleat.add(time);
-        for (Time t : lstCmpAleat)
-            System.out.println(t.getNome());
         while (lstCmpAleat.size() < 15) {
             boolean rpt = false;
             for (Time t : lstCmpAleat) {
