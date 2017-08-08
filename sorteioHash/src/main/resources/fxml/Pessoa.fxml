@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.PessoaController">
+    <stylesheets>
+        <URL value="@/styles/Styles.css" />
+    </stylesheets>
+   <children>
+      
+       <VBox AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+           <children>
+               <HBox spacing="5.0">
+                   <children>
+                       <MaterialDesignIconView fx:id="btnIncluir" glyphName="PLUS_BOX" onMouseClicked="#acIncluir" size="1.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                       <MaterialDesignIconView fx:id="btnAlterar" glyphName="PENCIL_BOX" onMouseClicked="#acAlterar" size="1.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                       <MaterialDesignIconView fx:id="btnDeletar" glyphName="MINUS_BOX" onMouseClicked="#acExcluir" size="1.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                  <MaterialDesignIconView fx:id="btnBloquear" glyphName="CLOSE_BOX" size="1.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                  <MaterialDesignIconView glyphName="FACEBOOK_BOX" size="1.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></MaterialDesignIconView>
+                  <HBox fx:id="hBxProgresso" alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="619.0" spacing="10.0" visible="false">
+                     <children>
+                        <Label fx:id="lbTempo" text="00:00" />
+                     </children>
+                  </HBox>
+                   </children>
+                   <padding>
+                       <Insets bottom="5.0" left="5.0" top="5.0" />
+                   </padding>
+               </HBox>
+               <TableView fx:id="tblView">
+                   <columns>
+                       <TableColumn fx:id="colId" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" style="-fx-alignment: CENTER;" text="Id">
+                           <cellValueFactory>
+                               <PropertyValueFactory property="id" />
+                           </cellValueFactory>
+                       </TableColumn>
+                       <TableColumn fx:id="colNome" maxWidth="200" prefWidth="200.0" text="Nome">
+                           <cellValueFactory>
+                               <PropertyValueFactory property="nome" />
+                           </cellValueFactory>
+                       </TableColumn>
+                       <TableColumn fx:id="colUrl" maxWidth="500.0" minWidth="75.0" prefWidth="500.0" text="URL Media Social">
+                           <cellValueFactory>
+                               <PropertyValueFactory property="url" />
+                           </cellValueFactory>
+                       </TableColumn>
+                   </columns>
+                   <columnResizePolicy>
+                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                   </columnResizePolicy>
+                   <contextMenu>
+                       <ContextMenu>
+                           <items>
+                               <MenuItem onAction="#acIncluir" text="Incluir">
+                                   <graphic>
+                                       <MaterialDesignIconView glyphName="PLUS_BOX" />
+                                   </graphic>
+                               </MenuItem>
+                               <MenuItem fx:id="menuAlterar" onAction="#acAlterar" text="Alterar">
+                                   <graphic>
+                                       <MaterialDesignIconView glyphName="PENCIL_BOX" />
+                                   </graphic>
+                               </MenuItem>
+                               <MenuItem fx:id="menuDeletar" onAction="#acExcluir" text="Deletar">
+                                   <graphic>
+                                       <MaterialDesignIconView glyphName="MINUS_BOX" />
+                                   </graphic>
+                               </MenuItem>
+                        <MenuItem fx:id="menuBloquear" text="Bloquear">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="MINUS_BOX" />
+                           </graphic>
+                        </MenuItem>
+                           </items>
+                       </ContextMenu>
+                   </contextMenu>
+               </TableView>
+           </children>
+       </VBox>
+   </children>
+</AnchorPane>

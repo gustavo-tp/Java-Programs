@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CRUDPessoaController">
+    <stylesheets>
+        <URL value="@/styles/Styles.css" />
+    </stylesheets>
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="Nome Pessoa" />
+                        <TextField fx:id="txtFldNome" prefHeight="25.0" prefWidth="350.0" />
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbUrl" text="URL Media Social" />
+                  <TextField fx:id="txtFldUrl" prefHeight="25.0" prefWidth="350.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="btnConfirma" mnemonicParsing="false" onAction="#btnConfirmaClick" text="Confirma">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="CHECK" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#btnCancelaClick" text="Cancela">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="CLOSE" />
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
