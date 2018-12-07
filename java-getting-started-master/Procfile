@@ -1,0 +1,1 @@
+web: java -jar target/iniciando-com-devops-1.0.jar
